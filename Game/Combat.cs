@@ -45,7 +45,7 @@ public class Combat(ICharacter character1, ICharacter character2)
         else
         {
             message =
-                $"{attackerName}'s {hitName} for {hit.Damage} damage. [{targetName}: {target.HitPoints}]";
+                $"{attackerName}'s {hitName} hit {targetName} for {hit.Damage} damage. [{targetName}: {target.HitPoints}]";
         }
 
         Console.WriteLine(message);
