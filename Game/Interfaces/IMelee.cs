@@ -1,9 +1,9 @@
-using Game.Attacks;
-
 namespace Game.Interfaces;
 
 public interface IMelee : ICharacter
 {
+    public abstract IHit CreateAttack();
+
     bool ICharacter.IsHit()
     {
         return Random.Next(0, 100) <= 85;
@@ -16,11 +16,17 @@ public interface IMelee : ICharacter
 
     IHit ICharacter.CreateHit()
     {
-        if (!IsHit()) return new Hit() { IsHit = false };
+        var Attack = CreateAttack();
 
-        var isCriticalHit = IsCriticalHit();
-        var baseDamage = Random.Next(Damage.min, Damage.max);
-        var damage = isCriticalHit ? baseDamage * 2 : baseDamage;
-        return new Hit { IsHit = true, IsCritical = isCriticalHit, Damage = damage };
+        Attack.IsHit = IsHit();
+
+        if (Attack.IsHit)
+        {
+            Attack.IsCritical = IsCriticalHit();
+            var baseDamage = Random.Next(Damage.min, Damage.max);
+            Attack.Damage = Attack.IsCritical ? baseDamage * 2 : baseDamage;
+        }
+
+        return Attack;
     }
 }
