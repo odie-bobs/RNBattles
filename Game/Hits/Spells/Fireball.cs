@@ -1,8 +1,8 @@
 using Game.Interfaces;
 
-namespace Game.Attacks;
+namespace Game.Hits.Spells;
 
-public class Strike : IHit
+public class Fireball : IHit
 {
     public bool IsHit { get; set; }
     public bool IsCritical { get; set; }

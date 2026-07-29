@@ -1,5 +1,3 @@
-using Game.Attacks;
-
 namespace Game.Interfaces;
 
 public interface ICaster : ICharacter

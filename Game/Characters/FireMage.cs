@@ -1,4 +1,4 @@
-using Game.Attacks;
+using Game.Hits.Spells;
 using Game.Interfaces;
 
 namespace Game.Characters;
