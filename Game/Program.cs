@@ -1,9 +1,10 @@
 ﻿using Game;
 using Game.Characters;
 using Game.Weapons.Melee;
+using Game.Weapons.Spell;
 
 var combatant1 = new Warrior(new Sword(15, 35, 2.25));
-var combatant2 = new Barbarian(new Sword(10, 25, 1.2));
+var combatant2 = new FireMage(new Staff(10, 25, 1.2));
 
 var combat = new Combat(combatant1, combatant2);
 
@@ -15,6 +16,7 @@ Console.WriteLine("----------");
 while (combat.CheckForDeath())
 {
     combat.Fight();
+    Console.WriteLine("-----");
 }
 
 Console.WriteLine(
