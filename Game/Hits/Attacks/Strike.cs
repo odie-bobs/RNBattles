@@ -1,10 +1,3 @@
-using Game.Interfaces;
-
 namespace Game.Hits.Attacks;
 
-public class Strike : IHit
-{
-    public bool IsHit { get; set; }
-    public bool IsCritical { get; set; }
-    public int Damage { get; set; }
-}
+public class Strike(IWeapon weapon) : BasicHit(weapon) { }
