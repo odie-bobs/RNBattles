@@ -21,11 +21,7 @@ public interface IMelee : ICharacter
         Attack.IsHit = IsHit();
 
         if (Attack.IsHit)
-        {
             Attack.IsCritical = IsCriticalHit();
-            var baseDamage = Random.Next(Damage.min, Damage.max);
-            Attack.Damage = Attack.IsCritical ? baseDamage * 2 : baseDamage;
-        }
 
         return Attack;
     }

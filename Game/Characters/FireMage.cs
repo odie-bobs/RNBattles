@@ -3,12 +3,12 @@ using Game.Interfaces;
 
 namespace Game.Characters;
 
-public class FireMage(int min, int max) : ICaster
+public class FireMage(IWeapon weapon) : ICaster
 {
     public Random Random { get; init; } = new();
     public int HitPoints { get; set; } = 100;
     public bool IsAlive { get; set; } = true;
-    public (int min, int max) Damage { get; set; } = (min, max);
+    public IWeapon Weapon { get; set; } = weapon;
 
-    IHit ICaster.CreateSpell() => new Fireball();
+    IHit ICaster.CreateSpell() => new Fireball(Weapon);
 }

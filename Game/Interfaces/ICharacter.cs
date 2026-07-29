@@ -5,8 +5,7 @@ public interface ICharacter
     Random Random { get; init; }
     public int HitPoints { get; set; }
     bool IsAlive { get; set; }
-    (int min, int max) Damage { get; set; }
-
+    IWeapon Weapon { get; set; }
 
     public abstract bool IsHit();
     public abstract bool IsCriticalHit();
@@ -14,8 +13,9 @@ public interface ICharacter
 
     public virtual void ApplyHit(IHit hit)
     {
-        if (!hit.IsHit) return;
-        
+        if (!hit.IsHit)
+            return;
+
         HitPoints -= hit.Damage;
         if (HitPoints <= 0)
             IsAlive = false;

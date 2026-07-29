@@ -3,12 +3,12 @@ using Game.Interfaces;
 
 namespace Game.Characters;
 
-public class Barbarian(int min, int max) : IMelee
+public class Barbarian(IWeapon weapon) : IMelee
 {
     public Random Random { get; init; } = new();
     public int HitPoints { get; set; } = 95;
     public bool IsAlive { get; set; } = true;
-    public (int min, int max) Damage { get; set; } = (min, max);
+    public IWeapon Weapon { get; set; } = weapon;
 
-    IHit IMelee.CreateAttack() => new Slam();
+    IHit IMelee.CreateAttack() => new Slam(Weapon);
 }

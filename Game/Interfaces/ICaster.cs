@@ -18,19 +18,10 @@ public interface ICaster : ICharacter
     {
         var spell = CreateSpell();
 
-        if (!IsHit())
-        {
-            spell.IsHit = false;
-            return spell;
-        }
+        spell.IsHit = IsHit();
 
-        var isCriticalHit = IsCriticalHit();
-        var baseDamage = Random.Next(Damage.min, Damage.max);
-        var damage = isCriticalHit ? baseDamage * 2 : baseDamage;
-
-        spell.IsHit = true;
-        spell.IsCritical = isCriticalHit;
-        spell.Damage = damage;
+        if (spell.IsHit)
+            spell.IsCritical = IsCriticalHit();
 
         return spell;
     }

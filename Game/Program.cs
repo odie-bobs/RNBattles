@@ -1,8 +1,9 @@
 ﻿using Game;
 using Game.Characters;
+using Game.Weapons.Melee;
 
-var combatant1 = new Warrior(4, 15);
-var combatant2 = new Barbarian(8, 17);
+var combatant1 = new Warrior(new Sword(15, 35, 2.25));
+var combatant2 = new Barbarian(new Sword(10, 25, 1.2));
 
 var combat = new Combat(combatant1, combatant2);
 
@@ -17,7 +18,7 @@ while (combat.CheckForDeath())
 }
 
 Console.WriteLine(
-    !combatant1.IsAlive
+    combatant1.IsAlive
         ? $"{combatant1.GetType().Name} wins!"
         : $"{combatant2.GetType().Name} wins!!"
 );
