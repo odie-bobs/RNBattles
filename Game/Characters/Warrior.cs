@@ -1,3 +1,4 @@
+using Game.Attacks;
 using Game.Interfaces;
 
 namespace Game.Characters;
@@ -10,4 +11,5 @@ public class Warrior(int min, int max) : IMelee
 
     public (int min, int max) Damage { get; set; } = (min: min, max: max);
 
+    public IHit CreateAttack() => new Strike();
 }
